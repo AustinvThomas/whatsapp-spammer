@@ -1,0 +1,22 @@
+from selenium import webdriver
+import time
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support import expected_conditions as EC
+driver = webdriver.Chrome()
+driver.get('https://web.whatsapp.com/')
+check = 1
+while check == 1:
+	name = input('Enter the name:')
+	msg = input('enter the message:')
+	count = int(input('enter the count:'))
+	input('enter anything after scanning')
+	user = driver.find_element_by_xpath('//span[@title = "{}"]'.format(name))
+	user.click()
+	msg_box = driver.find_element_by_class_name('_3uMse')
+	for i in range(count):
+		msg_box.send_keys(i,".",msg)
+		time.sleep(1)
+		button = driver.find_element_by_class_name('_1U1xa')
+		button.click()
+	check = int(input("Do you want to continue:"))
